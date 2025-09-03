@@ -1,4 +1,6 @@
 from django.db import models
+
+
 class Autor(models.Model):
     id_autor = models.AutoField(primary_key=True, db_column='id_autor')
     nombre = models.CharField(max_length=100)

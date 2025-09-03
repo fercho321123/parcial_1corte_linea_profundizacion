@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Autor, Editorial, Libro, Miembro, Prestamo
 
-
 class AutorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Autor
