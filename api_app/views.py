@@ -1,36 +1,33 @@
-from django.shortcuts import render
-from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
-from django.utils import timezone
+
+from rest_framework import viewsets, permissions
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
 
 
-class Autor(models.Model):
-    nombre = models.CharField(max_length=100)
-    nacionalidad = models.CharField(max_length=100)
-    fecha_nacimiento = models.TextField(blank=True, null=True)
+from .models import Autor, Editorial, Libro, Miembro, Prestamo
+from .serializers import (
+AutorSerializer, EditorialSerializer, LibroSerializer,
+MiembroSerializer, PrestamoSerializer
+)
+
+class BaseViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny]
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+
+    
+class AutorViewSet(BaseViewSet):
+    queryset = Autor.objects.all()
+    serializer_class = AutorSerializer
+    search_fields = ['nombre', 'apellido', 'biografia']
+    ordering_fields = ['nombre', 'apellido', 'id']
 
 
-class Meta:
-    ordering = ['apellido', 'nombre']
 
 
-def __str__(self):
-    return f"{self.nombre} {self.apellido}".strip()
-
-
-
-
-class Editorial(models.Model):
-    nombre = models.CharField(max_length=150, unique=True)
-    direccion = models.CharField(max_length=255)
-    telefono = models.CharField(max_length=30, blank=True, null=True)
-
-
-class Meta:
-    ordering = ['nombre']
-
-
-def __str__(self):
-    return self.nombre
- 
-
+class EditorialViewSet(BaseViewSet):
+    queryset = Editorial.objects.all()
+    serializer_class = EditorialSerializer
+    search_fields = ['nombre', 'direccion', 'telefono']
+    ordering_fields = ['nombre', 'id']
