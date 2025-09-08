@@ -1,10 +1,32 @@
 from django.urls import path
+
+
+
+
+
 from .views import (
    LibroList, CrearLibro, LibroDetail, ActualizarLibro,BorrarLibro,LibrosPorEditorial,LibrosPorAutor,MiembroList,CrearMiembro,PrestamoList,PrestamoDetail,CrearPrestamo,ActualizarPrestamo,BorrarPrestamo
-   ,ActualizarMiembro,BorrarMiembro,MiembrosPorNombre,ActualizarPrestamo,BorrarPrestamo,PrestamosPorMiembro,PrestamosPorLibro
-)
-
+   ,ActualizarMiembro,BorrarMiembro,MiembrosPorNombre,ActualizarPrestamo,BorrarPrestamo,PrestamosPorMiembro,PrestamosPorLibro)
 urlpatterns=[
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 # Libros
 path('libros/', LibroList.as_view(), name='lista_libros'),
 path('libros/crear/', CrearLibro.as_view(), name='crear_libro'),
