@@ -14,9 +14,14 @@ class EditorialSerializer(serializers.ModelSerializer):
 
 
 class LibroSerializer(serializers.ModelSerializer):
-    # Para mostrar datos del autor y editorial dentro del libro
     autor = AutorSerializer(read_only=True)
     editorial = EditorialSerializer(read_only=True)
+    autor_id = serializers.PrimaryKeyRelatedField(
+        queryset=Autor.objects.all(), source="autor", write_only=True
+    )
+    editorial_id = serializers.PrimaryKeyRelatedField(
+        queryset=Editorial.objects.all(), source="editorial", write_only=True
+    )
 
     class Meta:
         model = Libro
@@ -33,6 +38,13 @@ class PrestamoSerializer(serializers.ModelSerializer):
     # Para mostrar libro y miembro dentro del préstamo
     libro = LibroSerializer(read_only=True)
     miembro = MiembroSerializer(read_only=True)
+    id_libro = serializers.PrimaryKeyRelatedField(
+        queryset=Libro.objects.all(), source="libro", write_only=True
+    )
+    id_miembro = serializers.PrimaryKeyRelatedField(
+        queryset=Miembro.objects.all(), source="miembro", write_only=True
+    )
+
 
     class Meta:
         model = Prestamo
