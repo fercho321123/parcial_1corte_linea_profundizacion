@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_0framework',
+    'rest_framework',
     'api_app',
 ]
 
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'parcial.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Biblioteca',
         'USER':'postgres',
         'PASSWORD':'KCRT6_]mt6J;.:s+kew',
