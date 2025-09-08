@@ -16,9 +16,8 @@ path('libros/<int:pk>/borrar/', BorrarLibro.as_view(), name='borrar_libro'),
 path('libros/autor/<int:autor_id>/', LibrosPorAutor.as_view(), name='libros_por_autor'),
 path('libros/editorial/<int:editorial_id>/', LibrosPorEditorial.as_view(), name='libros_por_editorial'),
 
-# mIembros
 path('miembros/', MiembroList.as_view(), name='lista_miembros'),
-path('miembros/crear/', CrearMiembro.as_view(), name='crear_miembro'),
+path('miembros/crear/', CrearMiembro.as_view(), name='crear_miembro'),  
 path('miembros/<int:pk>/actualizar/', ActualizarMiembro.as_view(), name='actualizar_miembro'),
 path('miembros/<int:pk>/borrar/', BorrarMiembro.as_view(), name='borrar_miembro'),
 # filtrar miembros por nombre
